@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_d.c                                          :+:      :+:    :+:   */
+/*   print_percent.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/22 16:15:21 by ncolin            #+#    #+#             */
-/*   Updated: 2020/01/25 10:55:23 by ncolin           ###   ########.fr       */
+/*   Created: 2020/01/25 14:03:55 by ncolin            #+#    #+#             */
+/*   Updated: 2020/01/25 14:04:23 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void print_d(va_list *arg_list)
+void print_percent(va_list *arg_list)
 {
-	int num = va_arg(*arg_list, int);
-	ft_putnbr_fd(num, 1);
+	
 }

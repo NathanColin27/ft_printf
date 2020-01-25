@@ -6,14 +6,14 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 14:12:41 by ncolin            #+#    #+#             */
-/*   Updated: 2020/01/24 14:19:50 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/01/25 14:10:23 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void decToHex(int nbr){
-	int base_len;
+void decToHex(long nbr){
+	long base_len;
 	char *base;
 
 	base = "0123456789abcdef";
@@ -31,7 +31,7 @@ void decToHex(int nbr){
 		ft_putchar(base[nbr]);
 }
 
-void	ft_printf_hex(va_list *arg_list)
+void	print_x(va_list *arg_list)
 {
 	int nbr;
 	
@@ -62,7 +62,7 @@ void decToHex_upper(int nbr){
 
 
 
-void	ft_printf_hex_upper(va_list *arg_list)
+void	print_up_x(va_list *arg_list)
 {
 	
 	int nbr;

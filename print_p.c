@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_d.c                                          :+:      :+:    :+:   */
+/*   print_p.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/22 16:15:21 by ncolin            #+#    #+#             */
-/*   Updated: 2020/01/25 10:55:23 by ncolin           ###   ########.fr       */
+/*   Created: 2020/01/25 11:56:17 by ncolin            #+#    #+#             */
+/*   Updated: 2020/01/25 12:11:49 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void print_d(va_list *arg_list)
+void print_p(va_list *arg_list)
 {
-	int num = va_arg(*arg_list, int);
-	ft_putnbr_fd(num, 1);
+	long nbr = va_arg(*arg_list, long);
+	printf("ptr == %ld", nbr);
+	ft_putchar('0');
+	ft_putchar('x');
+	decToHex(nbr);
 }

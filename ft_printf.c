@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:42:22 by ncolin            #+#    #+#             */
-/*   Updated: 2020/01/24 14:14:51 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/01/25 14:16:19 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int indexFinder(char *tab, char elem)
 
 int ft_printf(const char *str,...)
 {
-	void (*tabFunction[5]) (va_list *) = {ft_printf_char, ft_printf_string, ft_printf_number, ft_printf_decToHex, ft_printf_decToHex_upper};
-	char tabIndex[10] = {'c', 's', 'd', 'x', 'X', 'p', 'i', 'u', '%', 0};
+	void (*tabFunction[9])(va_list *) = {print_c, print_s, print_d, print_x, print_up_x,print_d, print_p, print_u, print_percent};
+	char tabIndex[10] = {'c', 's', 'd', 'x', 'X', 'i', 'p', 'u', '%', 0};
 	int i = 0;
 	int tmpIndex = 0;
 
@@ -46,7 +46,7 @@ int ft_printf(const char *str,...)
 		{
 			tmpIndex = indexFinder(tabIndex, str[i]);
 			if (tmpIndex != -1)
-				(*tabFunction[tmpIndex]) (&arg_list);
+				(*tabFunction[tmpIndex])(&arg_list);
 		}
 		else if (str[i] != '%')
 		{
@@ -62,8 +62,8 @@ int ft_printf(const char *str,...)
 int main()
 {
 
-	printf ("%x\n",25);
-	ft_printf("%x\n", 25);
+	printf("%u\n", -1);
+	//ft_printf("%\n", );
 }
 
 

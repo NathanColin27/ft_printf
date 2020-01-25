@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 14:36:16 by ncolin            #+#    #+#             */
-/*   Updated: 2020/01/24 14:19:09 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/01/25 14:06:46 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,27 @@
 # include <stdio.h>
 # include <unistd.h>
 
-void ft_printf_char(va_list *arg_list);
+void print_c(va_list *arg_list);
 
-void ft_printf_string(va_list *arg_list);
+void print_s(va_list *arg_list);
 
-void ft_printf_number(va_list *arg_list);
+void print_d(va_list *arg_list);
 
-void ft_printf_hex(va_list *arg_list);
+void print_x(va_list *arg_list);
 
-void ft_printf_hex_upper(va_list *arg_list);
+void print_up_x(va_list *arg_list);
 
-void decToHex(int nbr);
+void print_p(va_list *arg_list);
+
+void print_u(va_list *arg_list);
+
+void print_percent(va_list *arg_list);
+
+void decToHex(long nbr);
 
 void decToHex_upper(int nbr);
 
 int indexFinder(char *tab, char elem);
 
-int ft_printf(const char *str,...);
+int ft_printf(const char *str, ...);
 #endif
