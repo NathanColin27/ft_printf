@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 14:36:16 by ncolin            #+#    #+#             */
-/*   Updated: 2020/01/27 12:54:55 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/01/27 15:44:44 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void decToHex(long nbr);
 void decToHex_upper(int nbr);
 
 int indexFinder(char *tab, char elem);
+
+int check_str(char *str, va_list *arg_list);
 
 int ft_printf(const char *str, ...);
 #endif
