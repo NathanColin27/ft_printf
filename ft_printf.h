@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 14:36:16 by ncolin            #+#    #+#             */
-/*   Updated: 2020/01/25 14:06:46 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/01/27 12:54:55 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,16 @@
 # include <stdarg.h>
 # include <stdio.h>
 # include <unistd.h>
+
+typedef struct	s_flags
+{
+	int		star;
+	int		width;
+	int		zero;
+	int		minus;
+	int		type;
+	int		dot;
+}				t_flags;
 
 void print_c(va_list *arg_list);
 
@@ -33,6 +43,8 @@ void print_p(va_list *arg_list);
 void print_u(va_list *arg_list);
 
 void print_percent(va_list *arg_list);
+
+void ft_u_putnbr(unsigned int n);
 
 void decToHex(long nbr);
 

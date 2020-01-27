@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:43:23 by ncolin            #+#    #+#             */
-/*   Updated: 2020/01/22 14:49:20 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/01/27 11:14:57 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 */
 
 void				ft_putchar(char c);
+
+void				ft_putnbr(int n);
 
 void				ft_putchar_fd(char c, int fd);
 

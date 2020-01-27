@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 16:15:21 by ncolin            #+#    #+#             */
-/*   Updated: 2020/01/25 10:55:23 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/01/27 11:13:18 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void print_d(va_list *arg_list)
 {
 	int num = va_arg(*arg_list, int);
-	ft_putnbr_fd(num, 1);
+	ft_putnbr(num);
 }
