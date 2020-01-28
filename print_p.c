@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 11:56:17 by ncolin            #+#    #+#             */
-/*   Updated: 2020/01/25 12:11:49 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/01/28 09:59:29 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void print_p(va_list *arg_list)
 {
 	long nbr = va_arg(*arg_list, long);
-	printf("ptr == %ld", nbr);
 	ft_putchar('0');
 	ft_putchar('x');
 	decToHex(nbr);
