@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 14:12:41 by ncolin            #+#    #+#             */
-/*   Updated: 2020/01/25 14:10:23 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/02/05 17:18:58 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void decToHex(long nbr){
 		ft_putchar(base[nbr]);
 }
 
-void	print_x(va_list *arg_list)
+void	print_x(va_list *arg_list, t_flags *flags)
 {
 	int nbr;
 	
@@ -62,7 +62,7 @@ void decToHex_upper(int nbr){
 
 
 
-void	print_up_x(va_list *arg_list)
+void	print_up_x(va_list *arg_list, t_flags *flags)
 {
 	
 	int nbr;

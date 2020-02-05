@@ -6,13 +6,13 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 14:03:55 by ncolin            #+#    #+#             */
-/*   Updated: 2020/01/27 15:55:34 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/02/05 17:19:04 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void print_percent(va_list *arg_list)
+void print_percent(va_list *arg_list, t_flags *flags)
 {
 	write(1, "%",1);
 }
