@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:42:22 by ncolin            #+#    #+#             */
-/*   Updated: 2020/02/05 17:33:34 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/02/17 14:57:14 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void fill_tab(void (*functions_tab[9]) (va_list*, t_flags *flags))
 	functions_tab[8] = print_percent;
 }
 
-int		is_flag(char c)
+int		ft_is_flag(char c)
 {
 	if(ft_strchr(FLAGS, c))
 	{
@@ -49,45 +49,72 @@ int		is_flag(char c)
 	return (0);
 }
 
-int parse_flags(char *str, int i, t_flags *flags)
+static t_flags			ft_initialize(void)
+{
+	t_flags	flags;
+
+	flags.star = 0;
+	flags.minus = 0;
+	flags.zero = 0;
+	flags.dot = 0;
+	flags.width = 0;
+	flags.type = 0;
+	return (flags);
+}
+
+int		ft_is_conv(char c){
+	if (index_finder(c, CONVERTERS) == -1)
+		return (0);
+	return (1);
+}
+
+int parse_flags(char *str, int i, t_flags *flags, va_list arg_list)
 {
 
 	while(str[i])
 	{
-		if (!is_flag(str[i]) || index_finder(str[i], CONVERTERS) != -1)
+		if (!ft_is_flag(str[i]) && !ft_is_conv(str[i]) && !ft_isdigit(str[i]))
 			break;
 		else if (str[i] == '.')
 			flags->dot = 1;
 		else if (str[i] == '*')
-			flags->star = 1;
+			*flags = ft_width_flag(*flags, arg_list);
 		else if (str[i] == '0')
 			flags->zero = 1;
 		else if (str[i] == '-')
 			flags->minus = 1;
+		else if (index_finder(str[i], CONVERTERS) != -1)
+		{
+			flags->type = str[i];
+			break;
+		}
 		i++;
 	}
+
 	return (i);
-	
 }
 
 
-int check_str(char *str, va_list *arg_list, t_flags my_flags)
+int check_str(char *str, va_list *arg_list, t_flags flags)
 {
 	int tmpIndex = 0;
 	int i = 0;
 	char *copy;
-	void (*functions_tab[9])(va_list*, t_flags *my_flags);
+	void (*functions_tab[9])(va_list*, t_flags *flags);
 	fill_tab(functions_tab);
 
 	copy = ft_strdup(str);
+	flags = ft_initialize();
 	while (str[i] != '\0')
 	{
+		
 		if (str[i - 1] == '%' && str[i])
 		{
-			i = parse_flags(copy, i, &my_flags);
-			tmpIndex = index_finder(str[i], CONVERTERS);
+			i = parse_flags(copy, i, &flags, *arg_list);
+			tmpIndex = index_finder(flags.type, CONVERTERS);
+			ft_put_width(flags.width, flags.zero);
 			if (tmpIndex != -1)
-				(*functions_tab[tmpIndex])(arg_list, &my_flags);
+				(*functions_tab[tmpIndex])(arg_list, &flags);
 			else
 				write(1, &str[i], 1);
 		}
@@ -95,6 +122,12 @@ int check_str(char *str, va_list *arg_list, t_flags my_flags)
 			write(1, &str[i], 1);
 		i++;
 	}
+	printf("FLAG.DOT = %d\n", flags.dot);
+	printf("FLAG.MINUS = %d\n", flags.minus);
+	printf("FLAG.ZERO = %d\n", flags.zero);
+	printf("FLAG.TYPE = %c\n", flags.type);
+	printf("FLAG.WIDTH = %d\n", flags.width);
+	printf("FLAG.STAR = %d\n", flags.star);
 	free(copy);
 	return (0);
 }
@@ -104,12 +137,12 @@ int		ft_printf(const char *str, ...)
 	int		total;
 	char	*str_copy;
 	va_list	arg_list;
-	t_flags my_flags;
+	t_flags flags;
 
 	total = 0;
 	str_copy = ft_strdup(str);
 	va_start(arg_list, str);
-	check_str(str_copy, &arg_list, my_flags);
+	check_str(str_copy, &arg_list, flags);
 	va_end(arg_list);
 	return (total);
 }
@@ -118,11 +151,12 @@ int main()
 {
 	char *str;
 
-	printf("%%, %c, %s , %x, %X, %d, %i, %p, %u\n", 'a', " test", 33, 40, -153, 10000, str, 666);
+	printf("%*d, %c, %s\n",6, 15, 'a', "HELP");
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 
-	ft_printf("%%, %c, %s , %x, %X, %d, %i, %p, %u\n", 'a', " test", 33, 40, -153, 10000, str, 666);
+	ft_printf("%*d, %c, %s \n",6, 15, 'a', "HELP");
+
 }
 
 
