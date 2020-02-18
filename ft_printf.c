@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:42:22 by ncolin            #+#    #+#             */
-/*   Updated: 2020/02/18 16:48:24 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/02/18 18:17:19 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,8 @@ int		parse_flags(char *str, int i, t_flags *flags, va_list arg_list)
 		else if (str[i] == '.')
 		{
 			*flags = ft_dot_flag(*flags, arg_list, &str[i + 1]);
-			i += ft_intlen(flags->dot);
+			if(flags->dot != 0)
+				i += ft_intlen(flags->dot);	
 		}
 		else if (index_finder(str[i], CONVERTERS) != -1)
 		{
@@ -120,7 +121,6 @@ int check_str(char *str, va_list *arg_list, t_flags flags)
 	flags = ft_initialize();
 	while (str[i] != '\0')
 	{
-		
 		if (str[i - 1] == '%' && str[i])
 		{
 			i = parse_flags(copy, i, &flags, *arg_list);
@@ -134,12 +134,12 @@ int check_str(char *str, va_list *arg_list, t_flags flags)
 			write(1, &str[i], 1);
 		i++;
 	}
-	printf("FLAG.DOT = %d\n", flags.dot);
-	printf("FLAG.MINUS = %d\n", flags.minus);
-	printf("FLAG.ZERO = %d\n", flags.zero);
-	printf("FLAG.TYPE = %c\n", flags.type);
-	printf("FLAG.WIDTH = %d\n", flags.width);
-	printf("FLAG.STAR = %d\n", flags.star);
+	// printf("FLAG.DOT = %d\n", flags.dot);
+	// printf("FLAG.MINUS = %d\n", flags.minus);
+	// printf("FLAG.ZERO = %d\n", flags.zero);
+	// printf("FLAG.TYPE = %c\n", flags.type);
+	// printf("FLAG.WIDTH = %d\n", flags.width);
+	// printf("FLAG.STAR = %d\n", flags.star);
 	free(copy);
 	return (0);
 }
@@ -163,11 +163,11 @@ int main()
 {
 	char *str;
 
-	printf("%.111d\n", 100);
+	printf("Real Printf : %20c\n", 'a');
 
 	///////////////////////////////////////////////////////////////////
 
-	ft_printf("%.111d\n", 100);
+	ft_printf("My   Printf : %20c\n", 'a');
 }
 
 
