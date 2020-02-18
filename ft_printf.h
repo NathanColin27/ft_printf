@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 14:36:16 by ncolin            #+#    #+#             */
-/*   Updated: 2020/02/18 11:38:45 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/02/18 16:59:17 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,12 @@ int ft_printf(const char *str, ...);
 
 int	ft_put_width(int width, int zero, int printed);
 
+int ft_intlen(int value);
+
 t_flags ft_star_flag(t_flags flags, va_list arg_list);
 
 t_flags ft_width_flag(t_flags flags, char digit);
+
+t_flags	ft_dot_flag(t_flags	flags, va_list arg_list, char *str);
 
 #endif
