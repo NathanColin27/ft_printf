@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:42:22 by ncolin            #+#    #+#             */
-/*   Updated: 2020/02/17 14:57:14 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/02/18 11:48:50 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,22 +71,26 @@ int		ft_is_conv(char c){
 int parse_flags(char *str, int i, t_flags *flags, va_list arg_list)
 {
 
-	while(str[i])
+	while (str[i])
 	{
 		if (!ft_is_flag(str[i]) && !ft_is_conv(str[i]) && !ft_isdigit(str[i]))
-			break;
+			break ;
 		else if (str[i] == '.')
 			flags->dot = 1;
 		else if (str[i] == '*')
-			*flags = ft_width_flag(*flags, arg_list);
+			*flags = ft_star_flag(*flags, arg_list);
 		else if (str[i] == '0')
 			flags->zero = 1;
 		else if (str[i] == '-')
 			flags->minus = 1;
+		else if (ft_isdigit(str[i]))
+		{
+			*flags = ft_width_flag(*flags, str[i]);
+		}
 		else if (index_finder(str[i], CONVERTERS) != -1)
 		{
 			flags->type = str[i];
-			break;
+			break ;
 		}
 		i++;
 	}
@@ -107,12 +111,10 @@ int check_str(char *str, va_list *arg_list, t_flags flags)
 	flags = ft_initialize();
 	while (str[i] != '\0')
 	{
-		
 		if (str[i - 1] == '%' && str[i])
 		{
 			i = parse_flags(copy, i, &flags, *arg_list);
 			tmpIndex = index_finder(flags.type, CONVERTERS);
-			ft_put_width(flags.width, flags.zero);
 			if (tmpIndex != -1)
 				(*functions_tab[tmpIndex])(arg_list, &flags);
 			else
@@ -151,12 +153,11 @@ int main()
 {
 	char *str;
 
-	printf("%*d, %c, %s\n",6, 15, 'a', "HELP");
+	printf("%d, %6c\n", 15, 'a');
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 
-	ft_printf("%*d, %c, %s \n",6, 15, 'a', "HELP");
-
+	ft_printf("%d, %6c\n", 15, 'a');
 }
 
 
