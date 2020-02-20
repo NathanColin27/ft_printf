@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:42:22 by ncolin            #+#    #+#             */
-/*   Updated: 2020/02/18 18:17:19 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/02/20 16:03:57 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,9 +118,10 @@ int check_str(char *str, va_list *arg_list, t_flags flags)
 	fill_tab(functions_tab);
 
 	copy = ft_strdup(str);
-	flags = ft_initialize();
+	
 	while (str[i] != '\0')
 	{
+		flags = ft_initialize();
 		if (str[i - 1] == '%' && str[i])
 		{
 			i = parse_flags(copy, i, &flags, *arg_list);
@@ -162,12 +163,40 @@ int		ft_printf(const char *str, ...)
 int main()
 {
 	char *str;
+	str = NULL;
 
-	printf("Real Printf : %20c\n", 'a');
-
+	printf("Real Printf1 : %-50s\n", "TEST123456789");
 	///////////////////////////////////////////////////////////////////
+	ft_printf("My   Printf1 : %-50s\n", "TEST123456789");
 
-	ft_printf("My   Printf : %20c\n", 'a');
+
+	printf("Real Printf2 : %-5.50s\n", "TEST123456789");
+	///////////////////////////////////////////////////////////////////
+	ft_printf("My   Printf2 : %-5.50s\n", "TEST123456789");
+
+
+
+	printf("Real Printf3 : %-50.5s\n", "TEST123456789");
+	///////////////////////////////////////////////////////////////////
+	ft_printf("My   Printf3 : %-50.5s\n", "TEST123456789");
+
+
+
+	printf("Real Printf4 : %-1.*s\n", 4,"TEST123456789");
+	///////////////////////////////////////////////////////////////////
+	ft_printf("My   Printf4 : %-1.*s\n", 4,"TEST123456789");
+
+
+
+	printf("Real Printf5 : %-*.*s\n", 15, 5, "TEST123456789");
+	///////////////////////////////////////////////////////////////////
+	ft_printf("My   Printf5 : %-*.*s\n",15, 5, "TEST123456789");
+
+
+
+	printf("Real Printf6 : %-50s\n", "TEST123456789");
+	///////////////////////////////////////////////////////////////////
+	ft_printf("My   Printf6 : %-50s\n", "TEST123456789");
 }
 
 
