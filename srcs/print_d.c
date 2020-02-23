@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 16:15:21 by ncolin            #+#    #+#             */
-/*   Updated: 2020/02/18 17:01:02 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/02/23 17:45:18 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ void print_d(va_list *arg_list, t_flags *flags)
 {
 	int num = va_arg(*arg_list, int);
 	int lenght = ft_intlen(num);
+	if(flags->dot >= 0)
+		flags->zero = 0;
+	if(flags->width + lenght < flags->dot )
+		flags->width = 0;
+	ft_put_width(flags->width, flags->zero, lenght);
 	if(flags->dot >= 0)
 	{
 		while(flags->dot > lenght)

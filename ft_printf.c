@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:42:22 by ncolin            #+#    #+#             */
-/*   Updated: 2020/02/23 16:44:20 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/02/23 17:44:13 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,9 +166,9 @@ int		ft_printf(const char *str, ...)
 
 int main()
 {
-	printf("Real Printf1 : %04%www%*%\n",30);
+	printf("Real Printf1 : %.d\n",300000);
 	///////////////////////////////////////////////////////////////////
-	ft_printf("My   Printf1 : %04%www%*%\n",30);
+	ft_printf("My   Printf1 : %.d\n",300000);
 }
 
 
