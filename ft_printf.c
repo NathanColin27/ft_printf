@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:42:22 by ncolin            #+#    #+#             */
-/*   Updated: 2020/02/20 16:03:57 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/02/23 16:44:20 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,8 @@ int		parse_flags(char *str, int i, t_flags *flags, va_list arg_list)
 		else if (str[i] == '.')
 		{
 			*flags = ft_dot_flag(*flags, arg_list, &str[i + 1]);
-			if(flags->dot != 0)
-				i += ft_intlen(flags->dot);	
+			if (flags->dot != 0)
+				i += ft_intlen(flags->dot);
 		}
 		else if (index_finder(str[i], CONVERTERS) != -1)
 		{
@@ -118,7 +118,7 @@ int check_str(char *str, va_list *arg_list, t_flags flags)
 	fill_tab(functions_tab);
 
 	copy = ft_strdup(str);
-	
+
 	while (str[i] != '\0')
 	{
 		flags = ft_initialize();
@@ -127,7 +127,11 @@ int check_str(char *str, va_list *arg_list, t_flags flags)
 			i = parse_flags(copy, i, &flags, *arg_list);
 			tmpIndex = index_finder(flags.type, CONVERTERS);
 			if (tmpIndex != -1)
+			{
 				(*functions_tab[tmpIndex])(arg_list, &flags);
+				if (flags.type == '%' && str[i+1] == '%')
+					i++;
+			}
 			else
 				write(1, &str[i], 1);
 		}
@@ -162,41 +166,9 @@ int		ft_printf(const char *str, ...)
 
 int main()
 {
-	char *str;
-	str = NULL;
-
-	printf("Real Printf1 : %-50s\n", "TEST123456789");
+	printf("Real Printf1 : %04%www%*%\n",30);
 	///////////////////////////////////////////////////////////////////
-	ft_printf("My   Printf1 : %-50s\n", "TEST123456789");
-
-
-	printf("Real Printf2 : %-5.50s\n", "TEST123456789");
-	///////////////////////////////////////////////////////////////////
-	ft_printf("My   Printf2 : %-5.50s\n", "TEST123456789");
-
-
-
-	printf("Real Printf3 : %-50.5s\n", "TEST123456789");
-	///////////////////////////////////////////////////////////////////
-	ft_printf("My   Printf3 : %-50.5s\n", "TEST123456789");
-
-
-
-	printf("Real Printf4 : %-1.*s\n", 4,"TEST123456789");
-	///////////////////////////////////////////////////////////////////
-	ft_printf("My   Printf4 : %-1.*s\n", 4,"TEST123456789");
-
-
-
-	printf("Real Printf5 : %-*.*s\n", 15, 5, "TEST123456789");
-	///////////////////////////////////////////////////////////////////
-	ft_printf("My   Printf5 : %-*.*s\n",15, 5, "TEST123456789");
-
-
-
-	printf("Real Printf6 : %-50s\n", "TEST123456789");
-	///////////////////////////////////////////////////////////////////
-	ft_printf("My   Printf6 : %-50s\n", "TEST123456789");
+	ft_printf("My   Printf1 : %04%www%*%\n",30);
 }
 
 
