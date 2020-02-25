@@ -6,23 +6,28 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:42:22 by ncolin            #+#    #+#             */
-/*   Updated: 2020/02/23 18:03:21 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/02/25 16:38:35 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-int ft_intlen (int value){
-  int l=1;
-  while(value>9){ l++; value/=10; }
-  return l;
+int		ft_intlen(int value){
+	int l;
+
+	l = 1;
+	while (value > 9)
+	{
+		l++;
+		value /= 10;
+	}
+	return (l);
 }
 
 int		index_finder(char elem, char *tab)
 {
 	int index;
-	
 	index = 0;
 	while (tab[index] != '\0')
 	{
@@ -33,7 +38,7 @@ int		index_finder(char elem, char *tab)
 	return (-1);
 }
 
-void fill_tab(void (*functions_tab[9]) (va_list*, t_flags *flags))
+void fill_tab(int (*functions_tab[9]) (va_list*, t_flags *flags))
 {
 	functions_tab[0] = print_c;
 	functions_tab[1] = print_s;
@@ -114,7 +119,7 @@ int check_str(char *str, va_list *arg_list, t_flags flags)
 	int tmpIndex = 0;
 	int i = 0;
 	char *copy;
-	void (*functions_tab[9])(va_list*, t_flags *flags);
+	int (*functions_tab[9])(va_list*, t_flags *flags);
 	fill_tab(functions_tab);
 
 	copy = ft_strdup(str);
@@ -129,7 +134,7 @@ int check_str(char *str, va_list *arg_list, t_flags flags)
 			if (tmpIndex != -1)
 			{
 				(*functions_tab[tmpIndex])(arg_list, &flags);
-				if (flags.type == '%' && str[i+1] == '%')
+				if (flags.type == '%' && str[i + 1] == '%')
 					i++;
 			}
 			else
@@ -139,12 +144,6 @@ int check_str(char *str, va_list *arg_list, t_flags flags)
 			write(1, &str[i], 1);
 		i++;
 	}
-	// printf("FLAG.DOT = %d\n", flags.dot);
-	// printf("FLAG.MINUS = %d\n", flags.minus);
-	// printf("FLAG.ZERO = %d\n", flags.zero);
-	// printf("FLAG.TYPE = %c\n", flags.type);
-	// printf("FLAG.WIDTH = %d\n", flags.width);
-	// printf("FLAG.STAR = %d\n", flags.star);
 	free(copy);
 	return (0);
 }
@@ -164,11 +163,11 @@ int		ft_printf(const char *str, ...)
 	return (total);
 }
 
-// int main()
-// {
-// 	printf("Real Printf1 : %-17.10d\n",300000);
-// 	///////////////////////////////////////////////////////////////////
-// 	ft_printf("My   Printf1 : %-17.10d\n",300000);
-// }
+int main()
+{
+	printf("Real Printf1 : %04.5d\n",-10);
+	///////////////////////////////////////////////////////////////////
+	ft_printf("My   Printf1 : %04.5d\n",-10);
+}
 
 

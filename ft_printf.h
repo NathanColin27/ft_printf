@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 14:36:16 by ncolin            #+#    #+#             */
-/*   Updated: 2020/02/18 16:59:17 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/02/25 16:21:29 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,21 @@ typedef struct	s_flags
 	int		dot;
 }				t_flags;
 
-void print_c(va_list *arg_list, t_flags *flags);
+int print_c(va_list *arg_list, t_flags *flags);
 
-void print_s(va_list *arg_list, t_flags *flags);
+int print_s(va_list *arg_list, t_flags *flags);
 
-void print_d(va_list *arg_list, t_flags *flags);
+int print_d(va_list *arg_list, t_flags *flags);
 
-void print_x(va_list *arg_list, t_flags *flags);
+int print_x(va_list *arg_list, t_flags *flags);
 
-void print_up_x(va_list *arg_list, t_flags *flags);
+int print_up_x(va_list *arg_list, t_flags *flags);
 
-void print_p(va_list *arg_list, t_flags *flags);
+int print_p(va_list *arg_list, t_flags *flags);
 
-void print_u(va_list *arg_list, t_flags *flags);
+int print_u(va_list *arg_list, t_flags *flags);
 
-void print_percent(va_list *arg_list, t_flags *flags);
+int print_percent(va_list *arg_list, t_flags *flags);
 
 void ft_u_putnbr(unsigned int n);
 
@@ -62,6 +62,10 @@ int ft_printf(const char *str, ...);
 int	ft_put_width(int width, int zero, int printed);
 
 int ft_intlen(int value);
+
+void put_num(char *str, t_flags *flags);
+
+void put_dot(char *str, int dot);
 
 t_flags ft_star_flag(t_flags flags, va_list arg_list);
 
