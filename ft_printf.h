@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 14:36:16 by ncolin            #+#    #+#             */
-/*   Updated: 2020/02/25 16:21:29 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/01 18:05:26 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,9 @@ t_flags ft_width_flag(t_flags flags, char digit);
 
 t_flags	ft_dot_flag(t_flags	flags, va_list arg_list, char *str);
 
+t_flags		ft_minus_flag(t_flags flags);
+
+int	ft_parse_int(int num, t_flags *flags);
+
+int put_precision(int num, t_flags *flags, int lenght);
 #endif

@@ -14,15 +14,17 @@ SRCS = 	ft_printf.c \
 
 OBJS = $(SRCS:.c=.o)
 
+INCLUDES = ft_printf.h libft/libft.h
+
 all: $(NAME) 
 
 $(NAME):
-	@gcc -c -Wall -Werror -Wextra libft/*.c -I libft/libft.h
+	@gcc -c -Wall -Werror -Wextra libft/*.c libft/libft.h
 	@gcc -c $(SRCS)
 	@ar rc $(NAME) *.o
 
 test:
-	@gcc -L. -lftprintf $(SRCS) -o test
+	@gcc -L. -lftprintf -o test
  
 clean:
 	@rm -rf *.o libft/*.o test

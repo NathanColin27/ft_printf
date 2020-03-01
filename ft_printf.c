@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:42:22 by ncolin            #+#    #+#             */
-/*   Updated: 2020/02/25 16:38:35 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/01 19:05:03 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,7 @@ int		parse_flags(char *str, int i, t_flags *flags, va_list arg_list)
 		else if (str[i] == '0' && flags->width == 0)
 			flags->zero = 1;
 		else if (str[i] == '-')
-		{
-			flags->zero = 0;
-			flags->minus = 1;
-		}
+			*flags = ft_minus_flag(*flags);
 		else if (ft_isdigit(str[i]))
 			*flags = ft_width_flag(*flags, str[i]);
 		else if (str[i] == '.')
@@ -165,9 +162,11 @@ int		ft_printf(const char *str, ...)
 
 int main()
 {
-	printf("Real Printf1 : %04.5d\n",-10);
+	int a = 15;
+	int *b = &a;
+	printf("Real Printf1 : %-45p\n",b);
 	///////////////////////////////////////////////////////////////////
-	ft_printf("My   Printf1 : %04.5d\n",-10);
+	ft_printf("My   Printf1 : %-p\n",b);
 }
 
 
