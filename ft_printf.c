@@ -3,27 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:42:22 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/01 19:05:03 by marvin           ###   ########.fr       */
+/*   Updated: 2020/03/02 15:51:58 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
-
-int		ft_intlen(int value){
-	int l;
-
-	l = 1;
-	while (value > 9)
-	{
-		l++;
-		value /= 10;
-	}
-	return (l);
-}
 
 int		index_finder(char elem, char *tab)
 {
@@ -98,7 +86,7 @@ int		parse_flags(char *str, int i, t_flags *flags, va_list arg_list)
 		{
 			*flags = ft_dot_flag(*flags, arg_list, &str[i + 1]);
 			if (flags->dot != 0)
-				i += ft_intlen(flags->dot);
+				i += ft_lenbase(flags->dot, 10);
 		}
 		else if (index_finder(str[i], CONVERTERS) != -1)
 		{
@@ -111,38 +99,44 @@ int		parse_flags(char *str, int i, t_flags *flags, va_list arg_list)
 }
 
 
-int check_str(char *str, va_list *arg_list, t_flags flags)
+int		check_str(char *str, va_list *arg_list, t_flags flags)
 {
-	int tmpIndex = 0;
-	int i = 0;
-	char *copy;
+	int tmp_index;
+	int total;
+	int i;
 	int (*functions_tab[9])(va_list*, t_flags *flags);
+
+	tmp_index = 0;
+	total = 0;
+	i = 0;
 	fill_tab(functions_tab);
-
-	copy = ft_strdup(str);
-
 	while (str[i] != '\0')
 	{
 		flags = ft_initialize();
 		if (str[i - 1] == '%' && str[i])
 		{
-			i = parse_flags(copy, i, &flags, *arg_list);
-			tmpIndex = index_finder(flags.type, CONVERTERS);
-			if (tmpIndex != -1)
+			i = parse_flags(str, i, &flags, *arg_list);
+			tmp_index = index_finder(flags.type, CONVERTERS);
+			if (tmp_index != -1)
 			{
-				(*functions_tab[tmpIndex])(arg_list, &flags);
+				total += (*functions_tab[tmp_index])(arg_list, &flags);
 				if (flags.type == '%' && str[i + 1] == '%')
 					i++;
 			}
 			else
+			{
 				write(1, &str[i], 1);
+				total++;
+			}
 		}
 		else if (str[i] != '%')
+		{
 			write(1, &str[i], 1);
+			total++;
+		}
 		i++;
 	}
-	free(copy);
-	return (0);
+	return (total);
 }
 
 int		ft_printf(const char *str, ...)
@@ -152,21 +146,21 @@ int		ft_printf(const char *str, ...)
 	va_list	arg_list;
 	t_flags flags;
 
-	total = 0;
 	str_copy = ft_strdup(str);
 	va_start(arg_list, str);
-	check_str(str_copy, &arg_list, flags);
+	total = check_str(str_copy, &arg_list, flags);
 	va_end(arg_list);
+	free(str_copy);
 	return (total);
 }
 
 int main()
 {
-	int a = 15;
-	int *b = &a;
-	printf("Real Printf1 : %-45p\n",b);
+	int a;
+
+	//printf("HEHEHE\n");
 	///////////////////////////////////////////////////////////////////
-	ft_printf("My   Printf1 : %-p\n",b);
+	a = ft_printf("HEHEHE%%%%%%%%");
+
+	printf("\nLenght = %d", a);
 }
-
-

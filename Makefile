@@ -10,8 +10,8 @@ SRCS = 	ft_printf.c \
 		srcs/print_percent.c \
 		srcs/ft_u_putnbr.c \
 		srcs/ft_width.c \
-		srcs/ft_flags.c
-
+		srcs/ft_flags.c 
+		
 OBJS = $(SRCS:.c=.o)
 
 INCLUDES = ft_printf.h libft/libft.h

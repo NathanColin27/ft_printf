@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 16:17:17 by ncolin            #+#    #+#             */
-/*   Updated: 2020/02/25 16:23:17 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/02 14:42:09 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 int print_s(va_list *arg_list, t_flags *flags)
 {
 	char *str = va_arg(*arg_list, char *);
+	if (!str)
+	{
+		ft_putstr_fd("(null)", 1);
+		return 0;
+	}
 	if (flags->minus == 0)
 	{
 		if (flags->dot >= 0)

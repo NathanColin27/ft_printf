@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 14:36:16 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/01 18:05:26 by marvin           ###   ########.fr       */
+/*   Updated: 2020/03/02 14:11:24 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,7 @@ int print_percent(va_list *arg_list, t_flags *flags);
 
 void ft_u_putnbr(unsigned int n);
 
-void decToHex(long nbr);
-
-void decToHex_upper(int nbr);
+void decToHex(long nbr, char* base);
 
 int index_finder(char elem, char *tab);
 
@@ -61,7 +59,7 @@ int ft_printf(const char *str, ...);
 
 int	ft_put_width(int width, int zero, int printed);
 
-int ft_intlen(int value);
+int ft_lenbase(long value, int base);
 
 void put_num(char *str, t_flags *flags);
 
@@ -78,4 +76,12 @@ t_flags		ft_minus_flag(t_flags flags);
 int	ft_parse_int(int num, t_flags *flags);
 
 int put_precision(int num, t_flags *flags, int lenght);
+
+int put_uprecision(int num, t_flags *flags, int lenght);
+
+int	ft_parse_uint(int num, t_flags *flags);
+
+int	ft_parse_hex(long num, char *base, t_flags *flags);
+
+int put_hex_precision(int num, t_flags *flags, int lenght);
 #endif

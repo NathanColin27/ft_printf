@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_d.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 16:15:21 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/01 18:33:48 by marvin           ###   ########.fr       */
+/*   Updated: 2020/03/02 13:34:54 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_parse_int(int num, t_flags *flags)
 {
 	int length;
 
-	length = ft_intlen(num);
+	length = ft_lenbase(num, 10);
 	if(flags->minus == 1)
 	{
 		flags->zero = 0;
@@ -50,12 +50,12 @@ int	ft_parse_int(int num, t_flags *flags)
 		put_precision(num, flags, length);
 		ft_putnbr(num);
 	}
+	return (0);
 }
 
 int print_d(va_list *arg_list, t_flags *flags)
 {
 	int num = va_arg(*arg_list, int);
-	int lenght = ft_intlen(num);
 	
 	if (flags->dot == 0 && num == 0)
 	{
@@ -69,4 +69,5 @@ int print_d(va_list *arg_list, t_flags *flags)
 		flags->width--;
 	}
 	ft_parse_int(num, flags);
+	return (0);
 }

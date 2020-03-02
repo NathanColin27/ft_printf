@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 14:37:51 by ncolin            #+#    #+#             */
-/*   Updated: 2020/02/20 15:09:27 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/02 15:17:06 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int		ft_put_width(int width, int zero, int printed)
 {
+	int total;
+	total = 0;
 	while (width > printed)
 	{
 		if (zero)
@@ -21,6 +23,7 @@ int		ft_put_width(int width, int zero, int printed)
 		else
 			ft_putchar(' ');
 		width--;
+		total++;
 	}
-	return (1);
+	return (total);
 }
