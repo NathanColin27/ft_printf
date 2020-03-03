@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flags.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 14:22:03 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/01 18:03:28 by marvin           ###   ########.fr       */
+/*   Updated: 2020/03/03 11:39:19 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ t_flags		ft_width_flag(t_flags flags, char digit)
 }
 
 t_flags		ft_minus_flag(t_flags flags)
- {
- 	flags.zero = 0;
+{
+	flags.zero = 0;
 	flags.minus = 1;
- 	return (flags);
- }
+	return (flags);
+}
 
-t_flags	ft_dot_flag(t_flags	flags, va_list arg_list, char *str)
+t_flags		ft_dot_flag(t_flags	flags, va_list arg_list, char *str)
 {
 	int i;
 

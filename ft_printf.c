@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:42:22 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/02 15:51:58 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/03 13:58:57 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ int		ft_is_conv(char c){
 
 int		parse_flags(char *str, int i, t_flags *flags, va_list arg_list)
 {
-
 	while (str[i])
 	{
 		if (!ft_is_flag(str[i]) && !ft_is_conv(str[i]) && !ft_isdigit(str[i]))
@@ -154,13 +153,13 @@ int		ft_printf(const char *str, ...)
 	return (total);
 }
 
-int main()
-{
-	int a;
+// int main()
+// {
+// 	int a;
+	
+// 	a = ft_printf("[%X]\n", 254);
+// 	///////////////////////////////////////////////////////////////////
+// 	printf("[%X]\n", 254);
 
-	//printf("HEHEHE\n");
-	///////////////////////////////////////////////////////////////////
-	a = ft_printf("HEHEHE%%%%%%%%");
-
-	printf("\nLenght = %d", a);
-}
+// 	printf("\nLenght = %d", a);
+// }

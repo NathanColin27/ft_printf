@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 14:36:16 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/02 14:11:24 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/03 13:34:27 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ int	ft_parse_int(int num, t_flags *flags);
 
 int put_precision(int num, t_flags *flags, int lenght);
 
-int put_uprecision(int num, t_flags *flags, int lenght);
+int put_uprecision(unsigned int num, t_flags *flags, int lenght);
 
-int	ft_parse_uint(int num, t_flags *flags);
+int	ft_parse_uint(unsigned int num, t_flags *flags);
 
 int	ft_parse_hex(long num, char *base, t_flags *flags);
 
