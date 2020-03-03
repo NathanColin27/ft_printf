@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 14:03:55 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/03 12:00:58 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/03 16:11:13 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int print_percent(va_list *arg_list, t_flags *flags)
 	
 	if (flags->minus == 1)
 	{
+		flags->zero = 0;
 		write(1, "%", 1);
 		total++;
 	}

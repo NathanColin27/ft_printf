@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:42:22 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/03 13:58:57 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/03 16:59:45 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ int		check_str(char *str, va_list *arg_list, t_flags flags)
 		if (str[i - 1] == '%' && str[i])
 		{
 			i = parse_flags(str, i, &flags, *arg_list);
+			printf("\nFLAG width %d\n", flags.width);
 			tmp_index = index_finder(flags.type, CONVERTERS);
 			if (tmp_index != -1)
 			{
@@ -153,13 +154,10 @@ int		ft_printf(const char *str, ...)
 	return (total);
 }
 
-// int main()
-// {
-// 	int a;
-	
-// 	a = ft_printf("[%X]\n", 254);
-// 	///////////////////////////////////////////////////////////////////
-// 	printf("[%X]\n", 254);
-
-// 	printf("\nLenght = %d", a);
-// }
+int main()
+{
+	ft_printf("{%1.*s}", 0, "42");
+	//
+	/////////////////////////////////////////////////////////////////
+	//printf("2{%1.*s}", 0, "42");
+}

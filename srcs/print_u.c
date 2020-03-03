@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 14:03:13 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/03 13:35:46 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/03 16:02:45 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,6 @@ int put_uprecision(unsigned int num, t_flags *flags, int lenght)
 	int total;
 
 	total = 0; 
-	if (flags->dot >= 0)
-	{
-		ft_putchar('-');
-		total++;
-	}
 	if (flags->dot >= 0)
 		while (flags->dot > lenght)
 	{
