@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 16:17:17 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/05 14:44:11 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/05 15:40:14 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int print_s(va_list *arg_list, t_flags *flags)
 			}
 			else
 			{
-				//printf("\nFLAG width %d\n", flags->width);
 				total += ft_put_width(flags->width, flags->zero, ft_strlen(str));
 				write(1, str, ft_strlen(str));
 				total += ft_strlen(str);

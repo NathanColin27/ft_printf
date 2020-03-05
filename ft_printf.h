@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 14:36:16 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/05 14:38:17 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/05 16:15:59 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ t_flags ft_star_flag(t_flags flags, va_list arg_list);
 
 t_flags	ft_width_flag(t_flags flags, va_list arg_list, char *str);
 
-t_flags	ft_dot_flag(t_flags	flags, va_list arg_list, char *str);
+int	ft_dot_flag(t_flags	*flags, va_list arg_list, char *str);
 
 t_flags		ft_minus_flag(t_flags flags);
 

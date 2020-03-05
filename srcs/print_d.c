@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 16:15:21 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/03 11:34:39 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/05 18:54:59 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,13 @@ int	ft_parse_int(int num, t_flags *flags)
 {
 	int length;
 	int total;
-
+	
 	length = ft_lenbase(num, 10);
 	total = 0;
+	if (num < 0)
+		length++;
 	if(flags->minus == 1)
 	{
-		flags->zero = 0;
 		total += put_precision(num, flags, length);
 		ft_putnbr(num);
 	}
@@ -48,7 +49,8 @@ int	ft_parse_int(int num, t_flags *flags)
 	if(flags->dot < 0)
 		total += ft_put_width(flags->width, flags->zero, length);
 	else
-	{
+	{	
+		
 		flags->width -= flags->dot;
 		total += ft_put_width(flags->width,0,0);
 	}
@@ -73,13 +75,15 @@ int print_d(va_list *arg_list, t_flags *flags)
 		total += ft_put_width(flags->width, 0, 0);
 		return (total);
 	}
-	if (num < 0)
+	if (num < 0 && (flags->dot >= 0 || flags->zero == 1))
 	{
-		ft_putchar('-');
+		if (flags->dot <= -1 && flags->zero == 1)
+			ft_putchar('-');
 		total++;
 		num *= -1;
 		flags->width--;
 	}
+
 	total += ft_parse_int(num, flags);
 	return (total);
 }

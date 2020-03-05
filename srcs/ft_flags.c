@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 14:22:03 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/05 14:53:06 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/05 16:19:25 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_flags		ft_star_flag(t_flags flags, va_list arg_list)
 t_flags		ft_width_flag(t_flags flags, va_list arg_list, char *str)
 {
 	int i;
-
 	i = 0;
 	if (str[i] == '*')
 	{
@@ -45,8 +44,6 @@ t_flags		ft_width_flag(t_flags flags, va_list arg_list, char *str)
 		}
 	}
 	return (flags);
-	//flags.width = flags.width * 10 + (digit - 48);
-	//printf("\nFlag width = %d", flags.width);
 }
 
 t_flags		ft_minus_flag(t_flags flags)
@@ -56,21 +53,25 @@ t_flags		ft_minus_flag(t_flags flags)
 	return (flags);
 }
 
-t_flags		ft_dot_flag(t_flags	flags, va_list arg_list, char *str)
+int		ft_dot_flag(t_flags	*flags, va_list arg_list, char *str)
 {
 	int i;
 
 	i = 0;
-	if (str[i] == '*')
-		flags.dot = va_arg(arg_list, int);
+	if (*str == '*')
+	{
+		flags->dot = va_arg(arg_list, int);
+		i++;
+	}
 	else
 	{
-		flags.dot = 0;
-		while (ft_isdigit(str[i]))
+		flags->dot = 0;
+		while (ft_isdigit(*str))
 		{
-			flags.dot = flags.dot * 10 + (str[i] - 48);
+			flags->dot = flags->dot * 10 + (*str - 48);
+			str++;
 			i++;
 		}
 	}
-	return (flags);
+	return (i);
 }

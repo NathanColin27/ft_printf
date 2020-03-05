@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 14:12:41 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/03 13:50:13 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/05 17:58:48 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 int		ft_lenbase(long value, int base)
 {
+	if (value < 0)
+		value *= -1;
 	int l;
-
 	l = 1;
 	while (value > base)
 	{
