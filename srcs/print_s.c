@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 16:17:17 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/03 16:56:03 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/05 14:44:11 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,9 @@ int print_s(va_list *arg_list, t_flags *flags)
 
 	total = 0;
 	char *str = va_arg(*arg_list, char *);
-
-	//printf("FLAG %d\n\n\n\n\n", flags->width);
 	if (!str)
-	{	
-		total += ft_put_width(flags->width, flags->zero, flags->dot);
-		write(1, "(null)", 6);
-		return (6 + total);
+	{
+		str = "(null)";
 	}
 	// This goes in a function PrInT_s_WhItHOuT_mInUs
 	if (flags->minus == 0)
@@ -39,6 +35,7 @@ int print_s(va_list *arg_list, t_flags *flags)
 			}
 			else
 			{
+				//printf("\nFLAG width %d\n", flags->width);
 				total += ft_put_width(flags->width, flags->zero, ft_strlen(str));
 				write(1, str, ft_strlen(str));
 				total += ft_strlen(str);

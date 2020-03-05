@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:42:22 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/03 16:59:45 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/05 14:53:45 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,21 +73,29 @@ int		parse_flags(char *str, int i, t_flags *flags, va_list arg_list)
 	{
 		if (!ft_is_flag(str[i]) && !ft_is_conv(str[i]) && !ft_isdigit(str[i]))
 			break ;
-		else if (str[i] == '*')
-			*flags = ft_star_flag(*flags, arg_list);
-		else if (str[i] == '0' && flags->width == 0)
+		if (str[i] == '0' && flags->width == 0 && flags->minus == 0)
 			flags->zero = 1;
-		else if (str[i] == '-')
+		if (str[i] == '*')
+			*flags = ft_star_flag(*flags, arg_list);
+		if (str[i] == '-')
 			*flags = ft_minus_flag(*flags);
-		else if (ft_isdigit(str[i]))
-			*flags = ft_width_flag(*flags, str[i]);
-		else if (str[i] == '.')
+		if (ft_isdigit(str[i]))
+		{
+			*flags = ft_width_flag(*flags, arg_list, &str[i]);
+			if (flags->width != 0)
+				i += ft_lenbase(flags->width, 10);
+			else
+				i++;
+		}
+		if (str[i] == '.')
 		{
 			*flags = ft_dot_flag(*flags, arg_list, &str[i + 1]);
 			if (flags->dot != 0)
 				i += ft_lenbase(flags->dot, 10);
+			else
+				i++;
 		}
-		else if (index_finder(str[i], CONVERTERS) != -1)
+		if (index_finder(str[i], CONVERTERS) != -1)
 		{
 			flags->type = str[i];
 			break ;
@@ -115,7 +123,6 @@ int		check_str(char *str, va_list *arg_list, t_flags flags)
 		if (str[i - 1] == '%' && str[i])
 		{
 			i = parse_flags(str, i, &flags, *arg_list);
-			printf("\nFLAG width %d\n", flags.width);
 			tmp_index = index_finder(flags.type, CONVERTERS);
 			if (tmp_index != -1)
 			{
@@ -154,10 +161,10 @@ int		ft_printf(const char *str, ...)
 	return (total);
 }
 
-int main()
-{
-	ft_printf("{%1.*s}", 0, "42");
-	//
-	/////////////////////////////////////////////////////////////////
-	//printf("2{%1.*s}", 0, "42");
-}
+// int main()
+// {
+// 	ft_printf("1%5%\n");
+// 	//
+// 	/////////////////////////////////////////////////////////////////
+// 	printf("2%5%\n");	
+// }
