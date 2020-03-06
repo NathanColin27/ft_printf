@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:42:22 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/06 19:32:00 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/06 19:54:48 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,11 @@ int		parse_flags(char *str, int i, t_flags *flags, va_list arg_list)
 		if (!ft_is_flag(str[i]) && !ft_is_conv(str[i]) && !ft_isdigit(str[i]))
 			break ;
 		if (str[i] == '0' && flags->width == 0 && flags->minus == 0)
+		{
 			flags->zero = 1;
+			i++;
+			continue ;
+		}
 		if (str[i] == '*')
 			*flags = ft_star_flag(*flags, arg_list);
 		if (str[i] == '-')
@@ -151,8 +155,8 @@ int main()
 	int a;
 	int ret = 0, ret2 = 0;
 
-	ret = ft_printf("Hello %.0p, %*.*d WORLD %.3s!\n", NULL, -012, 0, 5, NULL);
-	ret2 =   printf("Hello %.0p, %*.*d WORLD %.3s!\n", NULL, -012, 0, 5, NULL);
+	ret = ft_printf("Hello %.0p, %000*.*d WORLD %.3s!\n", NULL, 119, 0, 5, NULL);
+	ret2 =   printf("Hello %.0p, %000*.*d WORLD %.3s!\n", NULL, 119, 0, 5, NULL);
 	printf("ft_printf : \t%d\nprintf : \t%d\n", ret, ret2);
 	/////////////////	////////////////////////////////////////////////
 }
