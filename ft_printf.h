@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 14:36:16 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/06 16:40:30 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/06 18:52:43 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int print_percent(va_list *arg_list, t_flags *flags);
 
 void ft_u_putnbr(unsigned int n);
 
-void decToHex(long nbr, char* base);
+void decToHex(long long nbr, char* base);
 
 int index_finder(char elem, char *tab);
 
@@ -59,7 +59,7 @@ int ft_printf(const char *str, ...);
 
 int	ft_put_width(int width, int zero, int printed);
 
-long ft_lenbase(long value, int base);
+long ft_lenbase(long long value, int base);
 
 void put_num(char *str, t_flags *flags);
 
@@ -81,7 +81,7 @@ int put_uprecision(unsigned int num, t_flags *flags, int lenght);
 
 int	ft_parse_uint(unsigned int num, t_flags *flags);
 
-int	ft_parse_hex(long num, char *base, t_flags *flags);
+int	ft_parse_hex(long long num, char *base, t_flags *flags);
 
 int put_hex_precision(int num, t_flags *flags, int lenght);
 #endif

@@ -6,18 +6,18 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 14:12:41 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/06 17:23:26 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/06 18:58:00 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
 
-long	ft_lenbase(long value, int base)
+long	ft_lenbase(long long value, int base)
 {
 	if (value < 0)
 		value *= -1;
-	long l;
+	long long l;
 	l = 1;
 	while (value >= base)
 	{
@@ -27,7 +27,7 @@ long	ft_lenbase(long value, int base)
 	return (l);
 }
 
-void decToHex(long nbr, char *base){
+void decToHex(long long nbr, char *base){
 	int base_len;
 	base_len = 16;
 
@@ -45,7 +45,7 @@ void decToHex(long nbr, char *base){
 		ft_putchar(base[nbr]);
 }
 
-int print_hex(long num, char* base, t_flags *flags)
+int print_hex(long long num, char* base, t_flags *flags)
 {
 	int total;
 
@@ -73,7 +73,7 @@ int put_hex_precision(int num, t_flags *flags, int lenght)
 	return (total);
 }
 
-int	ft_parse_hex(long num,char *base, t_flags *flags)
+int	ft_parse_hex(long long num,char *base, t_flags *flags)
 {
 	int length;
 	int total;
@@ -106,9 +106,9 @@ int	ft_parse_hex(long num,char *base, t_flags *flags)
 
 int	print_x(va_list *arg_list, t_flags *flags)
 {
-	long nbr;
-	nbr = va_arg(*arg_list, long);
-	// printf("NUMBER x = %ld\n", nbr);
+	long long nbr;
+	nbr = va_arg(*arg_list, unsigned int );
+	// printf("NUMBER x = %lld\n", nbr);
 	if(nbr < 0)
 		nbr += 4294967295;
 	
@@ -117,9 +117,10 @@ int	print_x(va_list *arg_list, t_flags *flags)
 
 int	print_up_x(va_list *arg_list, t_flags *flags)
 {
-	long nbr;
-	nbr = va_arg(*arg_list, long);
-	// printf("NUMBER X = %ld\n", nbr);
+	long long nbr;
+	nbr = va_arg(*arg_list,unsigned int  );
+	// printf("NUMBER X = %lld\n", nbr);
+
 	if(nbr < 0)
 		nbr += 4294967295;
 	
