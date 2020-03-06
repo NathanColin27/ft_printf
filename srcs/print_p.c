@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 11:56:17 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/06 15:52:49 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/06 19:25:30 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,10 @@ int print_p(va_list *arg_list, t_flags *flags)
 	total = 0;
 	base = "0123456789abcdef";
 	long nbr = va_arg(*arg_list, long);
-
-	if(nbr == 0)
-		length = 3;
-	else 
-		length = 14;
-		if(nbr == 0 && flags->dot == 0)
+	
+	length = ft_lenbase(nbr,16) + 2 ;
+	
+	if(nbr == 0 && flags->dot == 0)
 	{
 		ft_putchar('0');
 		ft_putchar('x');

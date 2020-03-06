@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:42:22 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/06 18:58:18 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/06 19:32:00 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,10 +146,14 @@ int		ft_printf(const char *str, ...)
 	return (total);
 }
 
-// int main()
-// {	
-// 	int a;
-// 	ft_printf("1|ultimate2 %*d %*s %*x %*X %*i %*u\n", 1, 5000, 1, "hey", 10, 54700, 1, 300, 10, -55, 1, -60);
-// 	/////////////////	////////////////////////////////////////////////
-// 	printf("2|ultimate2 %*d %*s %*x %*X %*i %*u\n", 1, 5000, 1, "hey", 10, 54700, 1, 300, 10, -55, 1, -60);
-// }
+int main()
+{	
+	int a;
+	int ret = 0, ret2 = 0;
+
+	ret = ft_printf("Hello %.0p, %*.*d WORLD %.3s!\n", NULL, -012, 0, 5, NULL);
+	ret2 =   printf("Hello %.0p, %*.*d WORLD %.3s!\n", NULL, -012, 0, 5, NULL);
+	printf("ft_printf : \t%d\nprintf : \t%d\n", ret, ret2);
+	/////////////////	////////////////////////////////////////////////
+}
+
