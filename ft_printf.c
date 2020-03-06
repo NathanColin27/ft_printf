@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:42:22 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/05 18:40:23 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/06 17:36:08 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,7 @@ int		parse_flags(char *str, int i, t_flags *flags, va_list arg_list)
 			*flags = ft_minus_flag(*flags);
 		if (ft_isdigit(str[i]))
 		{
-			*flags = ft_width_flag(*flags, arg_list, &str[i]);
-			if (flags->width != 0)
-				i += ft_lenbase(flags->width, 10);
-			else
-				i++;
+			i += ft_width_flag(flags, arg_list, &str[i]);
 		}
 		if (str[i] == '.')
 		{
@@ -117,23 +113,12 @@ int		check_str(char *str, va_list *arg_list, t_flags flags)
 	while (str[i] != '\0')
 	{
 		flags = ft_initialize();
-		if (str[i - 1] == '%' && str[i])
+		if (str[i] == '%' && str[i + 1])
 		{
-			i = parse_flags(str, i, &flags, *arg_list);
-				printf("DOT = %d\n",flags.dot);
-				printf("WIdth = %d\n",flags.width);
+			i = parse_flags(str, ++i, &flags, *arg_list);
 			tmp_index = index_finder(flags.type, CONVERTERS);
 			if (tmp_index != -1)
-			{
 				total += (*functions_tab[tmp_index])(arg_list, &flags);
-				if (flags.type == '%' && str[i + 1] == '%')
-					i++;
-			}
-			else
-			{
-				write(1, &str[i], 1);
-				total++;
-			}
 		}
 		else if (str[i] != '%')
 		{
@@ -161,10 +146,10 @@ int		ft_printf(const char *str, ...)
 	return (total);
 }
 
-int main()
-{
-	ft_printf("1%10.5i\n", -216);
-	/////////////////
-	////////////////////////////////////////////////
-	printf("2%10.5i\n", -216);
-}
+// int main()
+// {	
+// 	int a;
+// 	ft_printf("1|.%%.%%.%%.%%.%%.%%.%%.%%. \n");
+// 	/////////////////	////////////////////////////////////////////////
+// 	printf("2|.%%.%%.%%.%%.%%.%%.%%.%%. \n");
+// }

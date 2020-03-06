@@ -6,20 +6,20 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 14:12:41 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/05 17:58:48 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/06 17:23:26 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
 
-int		ft_lenbase(long value, int base)
+long	ft_lenbase(long value, int base)
 {
 	if (value < 0)
 		value *= -1;
-	int l;
+	long l;
 	l = 1;
-	while (value > base)
+	while (value >= base)
 	{
 		l++;
 		value /= base;
@@ -108,8 +108,10 @@ int	print_x(va_list *arg_list, t_flags *flags)
 {
 	long nbr;
 	nbr = va_arg(*arg_list, long);
+	// printf("NUMBER x = %ld\n", nbr);
 	if(nbr < 0)
 		nbr += 4294967295;
+	
 	return(print_hex(nbr, "0123456789abcdef", flags));
 }
 
@@ -117,7 +119,9 @@ int	print_up_x(va_list *arg_list, t_flags *flags)
 {
 	long nbr;
 	nbr = va_arg(*arg_list, long);
+	// printf("NUMBER X = %ld\n", nbr);
 	if(nbr < 0)
 		nbr += 4294967295;
+	
 	return(print_hex(nbr, "0123456789ABCDEF", flags));
 }

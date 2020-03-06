@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 14:36:16 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/05 16:15:59 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/06 16:40:30 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int ft_printf(const char *str, ...);
 
 int	ft_put_width(int width, int zero, int printed);
 
-int ft_lenbase(long value, int base);
+long ft_lenbase(long value, int base);
 
 void put_num(char *str, t_flags *flags);
 
@@ -67,15 +67,15 @@ void put_dot(char *str, int dot);
 
 t_flags ft_star_flag(t_flags flags, va_list arg_list);
 
-t_flags	ft_width_flag(t_flags flags, va_list arg_list, char *str);
+int ft_width_flag(t_flags *flags, va_list arg_list, char *str);
 
 int	ft_dot_flag(t_flags	*flags, va_list arg_list, char *str);
 
 t_flags		ft_minus_flag(t_flags flags);
 
-int	ft_parse_int(int num, t_flags *flags);
+int	ft_parse_int(int num, t_flags *flags, int sign);
 
-int put_precision(int num, t_flags *flags, int lenght);
+int put_precision(int num, t_flags *flags, int lenght, int sign);
 
 int put_uprecision(unsigned int num, t_flags *flags, int lenght);
 
