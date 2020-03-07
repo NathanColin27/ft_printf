@@ -6,12 +6,12 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:42:22 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/07 18:36:41 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/07 20:00:34 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
+
 
 int		index_finder(char elem, char *tab)
 {
@@ -149,15 +149,3 @@ int		ft_printf(const char *str, ...)
 	free(str_copy);
 	return (total);
 }
-
-int main()
-{	
-	int a;
-	int ret = 0, ret2 = 0;
-
-	ret = ft_printf("[%.5d]\n", -7);
-	ret2 =   printf("[%.5d]\n", -7);
-	printf("ft_printf : \t%d\nprintf : \t%d\n", ret, ret2);
-	/////////////////	////////////////////////////////////////////////
-}
-

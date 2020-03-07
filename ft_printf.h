@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 14:36:16 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/07 16:04:19 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/07 19:49:31 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 # define CONVERTERS "csdxXipu%"
 # define FLAGS "0.-*"
 
-# include "libft/libft.h"
 # include <stdarg.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <stdlib.h>
+# include <string.h>
 
 typedef struct	s_flags
 {
@@ -30,6 +31,18 @@ typedef struct	s_flags
 	int		type;
 	int		dot;
 }				t_flags;
+
+char	*ft_strchr(char const *str, int c);
+
+int		ft_isdigit(int c);
+
+void	ft_putchar(char c);
+
+void	ft_putnbr(int n);
+
+char	*ft_strdup(const char *s1);
+
+size_t	ft_strlen(const char *str);
 
 void decToHex_p(unsigned long long nbr, char *base);
 

@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 16:15:21 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/06 14:15:46 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/07 18:43:47 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_parse_int(int num, t_flags *flags, int sign)
 	int total;
 	
 	length = ft_lenbase(num, 10);
-	// printf("LENGHT = %d", length);
+
 	total = 0;
 	if (num < 0)
 		length++;
@@ -84,8 +84,10 @@ int print_d(va_list *arg_list, t_flags *flags)
 	if (num < 0 && (flags->dot >= 0 || flags->zero == 1))
 	{
 		if (flags->dot <= -1 && flags->zero == 1)
+		{
 			ft_putchar('-');
-		total++;
+			total++;
+		}
 		num *= -1;
 		flags->width--;
 	}
