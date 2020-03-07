@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:42:22 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/06 19:54:48 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/07 18:36:41 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,8 +155,8 @@ int main()
 	int a;
 	int ret = 0, ret2 = 0;
 
-	ret = ft_printf("Hello %.0p, %000*.*d WORLD %.3s!\n", NULL, 119, 0, 5, NULL);
-	ret2 =   printf("Hello %.0p, %000*.*d WORLD %.3s!\n", NULL, 119, 0, 5, NULL);
+	ret = ft_printf("[%.5d]\n", -7);
+	ret2 =   printf("[%.5d]\n", -7);
 	printf("ft_printf : \t%d\nprintf : \t%d\n", ret, ret2);
 	/////////////////	////////////////////////////////////////////////
 }

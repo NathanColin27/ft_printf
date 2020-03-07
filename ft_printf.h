@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 14:36:16 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/06 18:52:43 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/07 16:04:19 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ typedef struct	s_flags
 	int		type;
 	int		dot;
 }				t_flags;
+
+void decToHex_p(unsigned long long nbr, char *base);
+
+long	ft_lenbase_p(unsigned long long value, int base);
 
 int print_c(va_list *arg_list, t_flags *flags);
 
