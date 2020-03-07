@@ -6,12 +6,12 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 14:36:16 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/07 19:49:31 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/07 20:25:43 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINT_H
-# define FT_PRINT_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # define CONVERTERS "csdxXipu%"
 # define FLAGS "0.-*"
@@ -44,7 +44,7 @@ char	*ft_strdup(const char *s1);
 
 size_t	ft_strlen(const char *str);
 
-void decToHex_p(unsigned long long nbr, char *base);
+void 	decToHex_p(unsigned long long nbr, char *base);
 
 long	ft_lenbase_p(unsigned long long value, int base);
 
