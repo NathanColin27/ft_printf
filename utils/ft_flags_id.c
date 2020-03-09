@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_percent.c                                    :+:      :+:    :+:   */
+/*   ft_flags_id.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/25 14:03:55 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/09 11:52:22 by ncolin           ###   ########.fr       */
+/*   Created: 2020/03/09 11:36:43 by ncolin            #+#    #+#             */
+/*   Updated: 2020/03/09 11:45:29 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	print_percent(va_list *arg_list, t_flags *flags)
+int		ft_is_conv(char c)
 {
-	int total;
+	if (index_finder(c, CONVERTERS) == -1)
+		return (0);
+	return (1);
+}
 
-	total = 0;
-	if (flags->minus == 1)
+int		ft_is_flag(char c)
+{
+	if (ft_strchr(FLAGS, c))
+		return (1);
+	return (0);
+}
+
+int		index_finder(char elem, char *tab)
+{
+	int index;
+
+	index = 0;
+	while (tab[index] != '\0')
 	{
-		flags->zero = 0;
-		write(1, "%", 1);
-		total++;
+		if (tab[index] == elem)
+			return (index);
+		index++;
 	}
-	total += ft_put_width(flags->width, flags->zero, 1);
-	if (flags->minus == 0)
-	{
-		write(1, "%", 1);
-		total++;
-	}
-	return (total);
+	return (-1);
 }

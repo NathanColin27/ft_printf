@@ -6,46 +6,13 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 14:12:41 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/07 16:02:30 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/09 12:47:42 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-
-long	ft_lenbase(long long value, int base)
-{
-	if (value < 0)
-		value *= -1;
-	long long l;
-	l = 1;
-	while (value >= base)
-	{
-		l++;
-		value /= base;
-	}
-	return (l);
-}
-
-void decToHex(long long nbr, char *base){
-	int base_len;
-	base_len = 16;
-
-	if (nbr < 0)
-	{
-		ft_putchar('-');
-		decToHex(-nbr, base);
-	}
-	else if (nbr >= 16)
-	{
-		decToHex(nbr / base_len, base);
-		decToHex(nbr % base_len, base);
-	}
-	else
-		ft_putchar(base[nbr]);
-}
-
-int print_hex(long long num, char* base, t_flags *flags)
+int		print_hex(long long num, char* base, t_flags *flags)
 {
 	int total;
 
@@ -59,9 +26,10 @@ int print_hex(long long num, char* base, t_flags *flags)
 	return (total);
 }
 
-int put_hex_precision(int num, t_flags *flags, int lenght)
+int		put_hex_precision(int num, t_flags *flags, int lenght)
 {
 	int total;
+	
 	total = 0;
 	if (flags->dot >= 0)
 		while (flags->dot > lenght)
@@ -73,7 +41,7 @@ int put_hex_precision(int num, t_flags *flags, int lenght)
 	return (total);
 }
 
-int	ft_parse_hex(long long num,char *base, t_flags *flags)
+int		ft_parse_hex(long long num,char *base, t_flags *flags)
 {
 	int length;
 	int total;
@@ -84,7 +52,7 @@ int	ft_parse_hex(long long num,char *base, t_flags *flags)
 	{
 		flags->zero = 0;
 		total += put_hex_precision(num, flags, length);
-		decToHex(num, base);
+		ft_dec_to_hex(num, base);
 	}
 	if(flags->dot >= 0 && length > flags->dot)
 		flags->dot = length;
@@ -98,31 +66,28 @@ int	ft_parse_hex(long long num,char *base, t_flags *flags)
 	if (flags->minus == 0)
 	{
 		total += put_hex_precision(num, flags, length);
-		decToHex(num, base);
+		ft_dec_to_hex(num, base);
 	}
 	total+= length;
 	return (total);
 }
 
-int	print_x(va_list *arg_list, t_flags *flags)
+int		print_x(va_list *arg_list, t_flags *flags)
 {
 	long long nbr;
-	nbr = va_arg(*arg_list, unsigned int );
-	// printf("NUMBER x = %lld\n", nbr);
-	if(nbr < 0)
-		nbr += 4294967295;
 	
+	nbr = va_arg(*arg_list, unsigned int );
+	if (nbr < 0)
+		nbr += 4294967295;
 	return(print_hex(nbr, "0123456789abcdef", flags));
 }
 
-int	print_up_x(va_list *arg_list, t_flags *flags)
+int		print_up_x(va_list *arg_list, t_flags *flags)
 {
 	long long nbr;
-	nbr = va_arg(*arg_list,unsigned int  );
-	// printf("NUMBER X = %lld\n", nbr);
 
-	if(nbr < 0)
+	nbr = va_arg(*arg_list,unsigned int  );
+	if (nbr < 0)
 		nbr += 4294967295;
-	
 	return(print_hex(nbr, "0123456789ABCDEF", flags));
 }

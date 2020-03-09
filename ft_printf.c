@@ -6,27 +6,13 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:42:22 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/07 20:00:34 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/09 12:46:48 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-int		index_finder(char elem, char *tab)
-{
-	int index;
-	index = 0;
-	while (tab[index] != '\0')
-	{
-		if (tab[index] == elem)
-			return (index);
-		index++;
-	}
-	return (-1);
-}
-
-void fill_tab(int (*functions_tab[9]) (va_list*, t_flags *flags))
+void		fill_tab(int (*functions_tab[9]) (va_list*, t_flags *flags))
 {
 	functions_tab[0] = print_c;
 	functions_tab[1] = print_s;
@@ -39,16 +25,7 @@ void fill_tab(int (*functions_tab[9]) (va_list*, t_flags *flags))
 	functions_tab[8] = print_percent;
 }
 
-int		ft_is_flag(char c)
-{
-	if (ft_strchr(FLAGS, c))
-	{
-		return (1);
-	}
-	return (0);
-}
-
-static t_flags			ft_initialize(void)
+t_flags		ft_initialize(void)
 {
 	t_flags	flags;
 
@@ -61,13 +38,7 @@ static t_flags			ft_initialize(void)
 	return (flags);
 }
 
-int		ft_is_conv(char c){
-	if (index_finder(c, CONVERTERS) == -1)
-		return (0);
-	return (1);
-}
-
-int		parse_flags(char *str, int i, t_flags *flags, va_list arg_list)
+int			parse_flags(char *str, int i, t_flags *flags, va_list arg_list)
 {
 	while (str[i])
 	{
@@ -84,9 +55,7 @@ int		parse_flags(char *str, int i, t_flags *flags, va_list arg_list)
 		if (str[i] == '-')
 			*flags = ft_minus_flag(*flags);
 		if (ft_isdigit(str[i]))
-		{
 			i += ft_width_flag(flags, arg_list, &str[i]);
-		}
 		if (str[i] == '.')
 		{
 			i++;
@@ -101,7 +70,6 @@ int		parse_flags(char *str, int i, t_flags *flags, va_list arg_list)
 	}
 	return (i);
 }
-
 
 int		check_str(char *str, va_list *arg_list, t_flags flags)
 {
@@ -131,7 +99,6 @@ int		check_str(char *str, va_list *arg_list, t_flags flags)
 		}
 		i++;
 	}
-
 	return (total);
 }
 

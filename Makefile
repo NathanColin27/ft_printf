@@ -8,15 +8,19 @@ SRCS = 	ft_printf.c \
 		srcs/print_p.c \
 		srcs/print_u.c \
 		srcs/print_percent.c \
-		srcs/ft_u_putnbr.c \
 		srcs/ft_width.c \
 		srcs/ft_flags.c \
+		utils/ft_flags_id.c \
 		utils/ft_isdigit.c \
 		utils/ft_putchar.c \
 		utils/ft_putnbr.c \
 		utils/ft_strdup.c \
 		utils/ft_strlen.c \
-		utils/ft_strchr.c
+		utils/ft_strchr.c \
+		utils/ft_u_putnbr.c \
+		utils/ft_dec_to_hex.c \
+		utils/ft_lenbase.c \
+		
 
 OBJS = $(SRCS:.c=.o)
 

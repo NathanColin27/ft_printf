@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 14:36:16 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/07 20:25:43 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/09 12:45:36 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ typedef struct	s_flags
 	int		type;
 	int		dot;
 }				t_flags;
+
+int		ft_is_conv(char c);
+
+int		ft_is_flag(char c);
 
 char	*ft_strchr(char const *str, int c);
 
@@ -66,7 +70,9 @@ int print_percent(va_list *arg_list, t_flags *flags);
 
 void ft_u_putnbr(unsigned int n);
 
-void decToHex(long long nbr, char* base);
+void ft_dec_to_hex(long long nbr, char *base);
+
+void ft_dec_to_hex_p(unsigned long long nbr, char *base);
 
 int index_finder(char elem, char *tab);
 
@@ -88,7 +94,7 @@ int ft_width_flag(t_flags *flags, va_list arg_list, char *str);
 
 int	ft_dot_flag(t_flags	*flags, va_list arg_list, char *str);
 
-t_flags		ft_minus_flag(t_flags flags);
+t_flags ft_minus_flag(t_flags flags);
 
 int	ft_parse_int(int num, t_flags *flags, int sign);
 

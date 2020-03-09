@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_percent.c                                    :+:      :+:    :+:   */
+/*   ft_lenbase.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/25 14:03:55 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/09 11:52:22 by ncolin           ###   ########.fr       */
+/*   Created: 2020/03/09 11:53:45 by ncolin            #+#    #+#             */
+/*   Updated: 2020/03/09 11:55:51 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	print_percent(va_list *arg_list, t_flags *flags)
+long	ft_lenbase_p(unsigned long long value, int base)
 {
-	int total;
+	long l;
 
-	total = 0;
-	if (flags->minus == 1)
+	l = 1;
+	while (value >= base)
 	{
-		flags->zero = 0;
-		write(1, "%", 1);
-		total++;
+		l++;
+		value /= base;
 	}
-	total += ft_put_width(flags->width, flags->zero, 1);
-	if (flags->minus == 0)
+	return (l);
+}
+
+long	ft_lenbase(long long value, int base)
+{
+	long long l;
+
+	l = 1;
+	if (value < 0)
+		value *= -1;
+	while (value >= base)
 	{
-		write(1, "%", 1);
-		total++;
+		l++;
+		value /= base;
 	}
-	return (total);
+	return (l);
 }
