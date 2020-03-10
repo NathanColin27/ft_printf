@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 14:36:16 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/09 12:45:36 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/10 09:25:09 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,13 @@ int	ft_parse_uint(unsigned int num, t_flags *flags);
 int	ft_parse_hex(long long num, char *base, t_flags *flags);
 
 int put_hex_precision(int num, t_flags *flags, int lenght);
+
+int	print_ox();
+
+int put_str_minus(char *str, t_flags *flags);
+
+int put_str(char *str, t_flags *flags);
+
+int	putchar_ret(char c);
+
 #endif

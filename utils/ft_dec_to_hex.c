@@ -6,13 +6,13 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 12:00:18 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/09 12:32:43 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/10 08:59:50 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-void	ft_dec_to_hex(long long nbr, char *base)
+void		ft_dec_to_hex(long long nbr, char *base)
 {
 	int base_len;
 

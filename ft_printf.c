@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:42:22 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/09 12:46:48 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/10 09:40:14 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,9 @@ int			parse_flags(char *str, int i, t_flags *flags, va_list arg_list)
 		if (ft_isdigit(str[i]))
 			i += ft_width_flag(flags, arg_list, &str[i]);
 		if (str[i] == '.')
-		{
-			i++;
-			i += ft_dot_flag(flags, arg_list, &str[i]);
-		}
-		if (index_finder(str[i], CONVERTERS) != -1)
-		{
-			flags->type = str[i];
+			i += ft_dot_flag(flags, arg_list, &str[i + 1]);
+		if (index_finder(str[i], CONVERTERS) != -1 && (flags->type = str[i]))
 			break ;
-		}
 		i++;
 	}
 	return (i);
@@ -93,10 +87,7 @@ int		check_str(char *str, va_list *arg_list, t_flags flags)
 				total += (*functions_tab[tmp_index])(arg_list, &flags);
 		}
 		else if (str[i] != '%')
-		{
-			write(1, &str[i], 1);
-			total++;
-		}
+			total += putchar_ret(str[i]);
 		i++;
 	}
 	return (total);

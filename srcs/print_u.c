@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 14:03:13 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/09 12:52:12 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/10 09:03:57 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,19 @@ int		put_uprecision(unsigned int num, t_flags *flags, int lenght)
 
 int		ft_parse_uint(unsigned int num, t_flags *flags)
 {
-	int				length;
 	int				total;
 
 	total = 0;
-	length = ft_lenbase(num, 10);
 	if (flags->minus == 1)
 	{
 		flags->zero = 0;
-		total += put_uprecision(num, flags, length);
+		total += put_uprecision(num, flags, ft_lenbase(num, 10));
 		ft_u_putnbr(num);
 	}
-	if (flags->dot >= 0 && length > flags->dot)
-		flags->dot = length;
+	if (flags->dot >= 0 && ft_lenbase(num, 10) > flags->dot)
+		flags->dot = ft_lenbase(num, 10);
 	if (flags->dot < 0)
-		total += ft_put_width(flags->width, flags->zero, length);
+		total += ft_put_width(flags->width, flags->zero, ft_lenbase(num, 10));
 	else
 	{
 		flags->width -= flags->dot;
@@ -68,9 +66,9 @@ int		ft_parse_uint(unsigned int num, t_flags *flags)
 	}
 	if (flags->minus == 0)
 	{
-		total += put_uprecision(num, flags, length);
+		total += put_uprecision(num, flags, ft_lenbase(num, 10));
 		ft_u_putnbr(num);
 	}
-	total += length;
+	total += ft_lenbase(num, 10);
 	return (total);
 }

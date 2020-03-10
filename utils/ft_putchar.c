@@ -6,7 +6,7 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 14:40:29 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/07 19:50:42 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/10 09:24:59 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,10 @@
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
+}
+
+int		putchar_ret(char c)
+{
+	write(1, &c, 1);
+	return (1);
 }
