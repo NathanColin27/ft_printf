@@ -8,8 +8,8 @@ SRCS = 	ft_printf.c \
 		srcs/print_p.c \
 		srcs/print_u.c \
 		srcs/print_percent.c \
-		srcs/ft_width.c \
-		srcs/ft_flags.c \
+		srcs/width.c \
+		srcs/flags.c \
 		utils/ft_flags_id.c \
 		utils/ft_isdigit.c \
 		utils/ft_putchar.c \

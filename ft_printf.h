@@ -6,21 +6,29 @@
 /*   By: ncolin <ncolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 14:36:16 by ncolin            #+#    #+#             */
-/*   Updated: 2020/03/10 09:25:09 by ncolin           ###   ########.fr       */
+/*   Updated: 2020/03/10 10:21:41 by ncolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# define CONVERTERS "csdxXipu%"
-# define FLAGS "0.-*"
-
 # include <stdarg.h>
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+
+/*
+** 		CONSTANTS
+*/
+
+# define CONVERTERS "csdxXipu%"
+# define FLAGS "0.-*"
+
+/*
+** 		STRUCTS
+*/
 
 typedef struct	s_flags
 {
@@ -32,88 +40,98 @@ typedef struct	s_flags
 	int		dot;
 }				t_flags;
 
-int		ft_is_conv(char c);
+/*
+** 		MAIN
+*/
 
-int		ft_is_flag(char c);
+int				ft_printf(const char *str, ...);
 
-char	*ft_strchr(char const *str, int c);
+/*
+** 		UTILS
+*/
 
-int		ft_isdigit(int c);
+int				ft_is_conv(char c);
 
-void	ft_putchar(char c);
+int				ft_is_flag(char c);
 
-void	ft_putnbr(int n);
+char			*ft_strchr(char const *str, int c);
 
-char	*ft_strdup(const char *s1);
+int				ft_isdigit(int c);
 
-size_t	ft_strlen(const char *str);
+void			ft_putchar(char c);
 
-void 	decToHex_p(unsigned long long nbr, char *base);
+void			ft_putnbr(int n);
 
-long	ft_lenbase_p(unsigned long long value, int base);
+char			*ft_strdup(const char *s1);
 
-int print_c(va_list *arg_list, t_flags *flags);
+size_t			ft_strlen(const char *str);
 
-int print_s(va_list *arg_list, t_flags *flags);
+long			ft_lenbase_p(unsigned long long value, int base);
 
-int print_d(va_list *arg_list, t_flags *flags);
+void			ft_dec_to_hex(long long nbr, char *base);
 
-int print_x(va_list *arg_list, t_flags *flags);
+void			ft_dec_to_hex_p(unsigned long long nbr, char *base);
 
-int print_up_x(va_list *arg_list, t_flags *flags);
+int				index_finder(char elem, char *tab);
 
-int print_p(va_list *arg_list, t_flags *flags);
+int				check_str(char *str, va_list *arg_list, t_flags my_flags);
 
-int print_u(va_list *arg_list, t_flags *flags);
+void			ft_u_putnbr(unsigned int n);
 
-int print_percent(va_list *arg_list, t_flags *flags);
+int				ft_put_width(int width, int zero, int printed);
 
-void ft_u_putnbr(unsigned int n);
+long			ft_lenbase(long long value, int base);
 
-void ft_dec_to_hex(long long nbr, char *base);
+void			put_num(char *str, t_flags *flags);
 
-void ft_dec_to_hex_p(unsigned long long nbr, char *base);
+void			put_dot(char *str, int dot);
 
-int index_finder(char elem, char *tab);
+int				print_ox();
 
-int check_str(char *str, va_list *arg_list, t_flags my_flags);
+int				putchar_ret(char c);
 
-int ft_printf(const char *str, ...);
+/*
+** 		SRCS
+*/
 
-int	ft_put_width(int width, int zero, int printed);
+int				print_c(va_list *arg_list, t_flags *flags);
 
-long ft_lenbase(long long value, int base);
+int				print_s(va_list *arg_list, t_flags *flags);
 
-void put_num(char *str, t_flags *flags);
+int				print_d(va_list *arg_list, t_flags *flags);
 
-void put_dot(char *str, int dot);
+int				print_x(va_list *arg_list, t_flags *flags);
 
-t_flags ft_star_flag(t_flags flags, va_list arg_list);
+int				print_up_x(va_list *arg_list, t_flags *flags);
 
-int ft_width_flag(t_flags *flags, va_list arg_list, char *str);
+int				print_p(va_list *arg_list, t_flags *flags);
 
-int	ft_dot_flag(t_flags	*flags, va_list arg_list, char *str);
+int				print_u(va_list *arg_list, t_flags *flags);
 
-t_flags ft_minus_flag(t_flags flags);
+int				print_percent(va_list *arg_list, t_flags *flags);
 
-int	ft_parse_int(int num, t_flags *flags, int sign);
+int				ft_star_flag(t_flags *flags, va_list arg_list);
 
-int put_precision(int num, t_flags *flags, int lenght, int sign);
+int				ft_width_flag(t_flags *flags, va_list arg_list, char *str);
 
-int put_uprecision(unsigned int num, t_flags *flags, int lenght);
+int				ft_dot_flag(t_flags	*flags, va_list arg_list, char *str);
 
-int	ft_parse_uint(unsigned int num, t_flags *flags);
+int				ft_minus_flag(t_flags *flags);
 
-int	ft_parse_hex(long long num, char *base, t_flags *flags);
+int				ft_parse_int(int num, t_flags *flags, int sign);
 
-int put_hex_precision(int num, t_flags *flags, int lenght);
+int				put_precision(int num, t_flags *flags, int lenght, int sign);
 
-int	print_ox();
+int				put_uprecision(unsigned int num, t_flags *flags, int lenght);
 
-int put_str_minus(char *str, t_flags *flags);
+int				ft_parse_uint(unsigned int num, t_flags *flags);
 
-int put_str(char *str, t_flags *flags);
+int				ft_parse_hex(long long num, char *base, t_flags *flags);
 
-int	putchar_ret(char c);
+int				put_hex_precision(int num, t_flags *flags, int lenght);
+
+int				put_str_minus(char *str, t_flags *flags);
+
+int				put_str(char *str, t_flags *flags);
 
 #endif
